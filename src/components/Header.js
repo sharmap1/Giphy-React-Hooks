@@ -10,7 +10,7 @@ import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   AppBar: {
-    backgroundColor: "#009688",
+    backgroundColor: "#355c7d",
     color: "white",
   },
   hero: {
