@@ -4,17 +4,23 @@ import Toolbar from "@material-ui/core/Toolbar";
 import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import { StylesProvider } from "@material-ui/styles";
+import {
+  StylesProvider,
+  ThemeProvider,
+  createMuiTheme,
+} from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 import "./style.css";
 import Box from "@material-ui/core/Box";
+import { yellow } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   AppBar: {
     backgroundColor: "#355c7d",
-    color: "white",
+    color: "yellow",
   },
   hero: {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url('https://images-na.ssl-images-amazon.com/images/I/81P6NtI5MtL._AC_SL1500_.jpg')`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url('https://media1.giphy.com/media/iYVneIXJQ3jdJLkZmM/giphy.gif')`,
     height: "500px",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -23,8 +29,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    color: "#fff",
+    color: "yellow",
     fontSize: "4rem",
+    letterSpacing: "0.234em",
     [theme.breakpoints.down("lg")]: {
       height: 400,
       fontSize: "3em",
@@ -81,35 +88,52 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
+const customTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: yellow[500],
+    },
+  },
+});
 const Header = ({ search, updateSearch, onSearchClick }) => {
   const classes = useStyles();
   return (
     <>
       <StylesProvider>
-        <AppBar className={classes.AppBar}>
-          <Toolbar>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
+        <ThemeProvider theme={customTheme}>
+          <AppBar className={classes.AppBar}>
+            <Toolbar>
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  placeholder="Search Giphy"
+                  value={search}
+                  onChange={updateSearch}
+                  // onClick={onSearchClick}
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                  inputProps={{ "aria-label": "search" }}
+                />
               </div>
-              <InputBase
-                placeholder="Search Giphy"
-                value={search}
-                onChange={updateSearch}
+              <Button
+                className={classes.root}
+                variant="contained"
+                color="primary"
+                size="medium"
                 onClick={onSearchClick}
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ "aria-label": "search" }}
-              />
-            </div>
-          </Toolbar>
-        </AppBar>
-        <Box className={classes.hero}>
-          <Box>Giphy App</Box>
-        </Box>
+              >
+                search
+              </Button>
+            </Toolbar>
+          </AppBar>
+          <Box className={classes.hero}>
+            <Box>GIPHY APP</Box>
+          </Box>
+        </ThemeProvider>
       </StylesProvider>
     </>
   );
