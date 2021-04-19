@@ -6,7 +6,7 @@ This is a front end app that uses GIPHY API to make a dynamic web page that popu
 Upon loading the page 50 trending gifs will be loaded. The user can search gifs in the search box to generate any gifs of their choice. 
 
 ## Screenshot
-<img src="public/pic.PNG" width="650" height="550"> 
+<img src="public/pic.PNG" width="850" height="550"> 
 
 ## Installation
 ```
