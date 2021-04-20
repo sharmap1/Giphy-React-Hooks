@@ -7,7 +7,7 @@ Upon loading the page 50 trending gifs will be loaded. The user can search gifs 
 
 ## Website link
 
-This app is hosted with netlify : https://gipstatic.netlify.app/
+This app is hosted with netlify : https://giphytastic.netlify.app/
 
 
 ## Screenshot
